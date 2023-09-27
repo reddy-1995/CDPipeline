@@ -18,22 +18,11 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 - task: CopyFiles@2
-
   inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'    
 
-    SourceFolder: '$(agent.builddirectory)'
-
-    Contents: '**/*.war'
-
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-- task: PublishBuildArtifacts@1
-
+- task: PublishBuildArtifacts@1    
+  displayName: 'Publish Artifact: drop'
   inputs:
-
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
-    ArtifactName: 'NCPLwar01'
-
-    publishLocation: 'Container'
+    PathtoPublish: '$(build.artifactstagingdirectory)'
     
